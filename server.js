@@ -102,9 +102,6 @@ app.get('/viewProfile', (req,res)=>{
     //Get intendedUse
     const intendedUse = profiles[username].preferences.intendedUse
 
-    //todo render a table of the titles of builds
-
-    //TODO add another button that goes to a pages showing the details of builds
 
     //Render the page
     res.status(200).render('profile', {username, budget, intendedUse, pcBuilds: pcBuilds[username] })
@@ -315,7 +312,7 @@ app.post('/addBuild', (req,res) =>{
     //Create new json object
     var pcBuild = {
         name:name,
-        components: [{
+        components: {
             cpu:cpu,
             ram:ram,
             gpu:gpu,
@@ -324,7 +321,7 @@ app.post('/addBuild', (req,res) =>{
             storage:storage,
             cooler:cooler,
             psu:psu
-        }],
+        },
         intendedUse:intendedUse,
         price:price
     };

@@ -4,32 +4,34 @@
 {{/if}}
 
     {{#if budget}}
-    <p><b>Current Budget</b>: ${{budget}}</p>
+    <p><b>Current Total Budget</b>: ${{budget}}</p>
     {{/if}}
 
     {{#if intendedUse}}
-    <p><b>Intended PC use</b>: {{intendedUse}}</p>
+    <p><b>Intended PC Use</b>: {{intendedUse}}</p>
     {{/if}}
 
     <h2>Previous builds: </h2>
     
-    <form action="/viewMore" method="get">
-        <div>
-            <table>
-                <tr>
-                    <th>Name </th>
-                    <th>Price</th>
-                </tr>
-                {{#each pcBuilds}}
-                {{>build}}
-                {{/each}}
-            </table>
-            <button type="submit">view more</button>
-        </div>
+
+    <div>
+        <table>
+            <tr>
+                <th>Name </th>
+                <th>Price</th>
+            </tr>
+            {{#each pcBuilds}}
+            {{>build}}
+            {{/each}}
+        </table>
+            <p>
+                <a href="/home"><button type="button">Back</button></a>
+            
+             <a href="viewMore"><button>Build Details</button></a>
+            <a href="/editProfile"><button>Edit Profile</button></a>
+        </p>
+    </div>
         
-    </form>
-    {{!--{{need to add functionality to see Previous builds}}--}}
-    <p>
-        <button type="button" onclick="window.history.back()">Back</button>
-        <button><a href="/editProfile">Edit Profile</a></button>
-    </p>
+  
+   
+   

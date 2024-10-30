@@ -32,3 +32,74 @@
     text-decoration: none;
     cursor: pointer;
 }
+
+.navbar{
+    font-size: 22px;
+    background-color: black;
+    color: white;
+}
+
+.navlist{
+    margin: 0;
+}
+
+.navitem{
+    display: inline-block;
+    
+}
+
+.navitem a{
+    display: inline-block;
+    padding: 10px 20px;
+    color: white;
+   
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 10px;
+    background-color: #dadada;
+    max-height:  500px;
+
+}
+
+.button {
+    display: inline-block;
+    background-color: black;
+    padding: 10px;
+}
+
+.button a{
+    color: white;
+}
+
+button{
+    padding: 10px 70px;
+    color: white;
+    background-color: black;
+    margin: 10px;
+}
+
+table,th,td,tr{
+    background-color: gold;
+    border: 1px solid black;
+    color: black;
+    padding: 5px;
+}
+#error{
+    color: red;
+}
+
+input{
+    padding: 5px;
+}
+label{
+    margin: 5px;
+}
+
+button a{
+    color: white;
+}
+.navlist a{
+    color: white;
+}
