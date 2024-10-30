@@ -1,0 +1,22 @@
+<h1>Time to Create an Account</h1>
+    <form action="/register" method="post">
+        <label>Username</label>
+        <input type="text" name="username" required>
+        <label>Password</label>
+        <input type="password" name="password" required>
+       
+        <label>Confirm Password</label>
+      
+        <input type="password" name="confirmPassword" required>
+         {{#if error}}
+        <p>{{error}}</p>
+        {{/if}}
+
+        <h2>Enter your profile preferences below</h2>
+         {{>preferences}}
+         
+        <p>
+            <button type="button" onclick="window.history.back()">Back</button>
+            <button type="submit">Save</button>
+        </p>
+    </form>

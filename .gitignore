@@ -1,0 +1,6 @@
+.gitgnore
+package-lock.json
+package.json
+pcbuilds.json
+profiles.json
+node_modules

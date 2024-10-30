@@ -1,0 +1,55 @@
+ {{>navigation}}
+<h1>New Build</h1>
+    <form action="/addBuild" method="post">
+        <h2>Please enter the components you used below</h2>
+        <p>
+            <label>CPU</label>
+            <input type="text" name="cpu" required>
+            <label>RAM</label>
+            <input type="text" name="ram" required>
+        </p>
+        <p>
+            <label>GPU</label>
+            <input type="text" name="gpu" required>
+            <label>Motherboard</label>
+            <input type="text" name="motherboard" required>
+        </p>
+        <p>
+            <label>Case</label>
+            <input type="text" name="case" required>
+            <label>Storage</label>
+            <input type="text" name="storage" required>
+        </p>
+        <p>
+            <label>CPU Cooler</label>
+            <input type="text" name="cooler" required>
+            <label>Power Supply</label>
+            <input type="text" name="psu" required>
+        </p>
+
+        <h2>Select your intended use below</h2>
+        <p>
+            <label for="gaming">Gaming</label>
+            <input type="radio" id="gaming" name="intendedUse" required value="gaming">
+            <label for="productivity">Productivity</label>
+            <input type="radio" id="productivity" name="intendedUse" required value="productivity">
+        </p>
+
+        <h2>Enter the total price of your build</h2>
+        <p>
+            <label>Total price $</label>
+            <input type="number" name="price" required>
+        </p>
+
+        <h2>Finally, give your build a name</h2>
+        <p>
+            <label>Build name</label>
+            <input type="text" name="name" required>
+        </p>
+
+        <p>
+            <button type="button" onclick="window.history.back()">Back</button>
+            <button type="submit">Add</button>
+        </p>
+
+    </form>

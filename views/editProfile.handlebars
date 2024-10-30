@@ -1,0 +1,44 @@
+ {{>navigation}}
+<main id="editProfilePage">
+    <h1>Edit Profile</h1>
+
+    <form id="formByComponent" action="/editProfileByComponent" method="post">
+        <h2>Type in budget per part below</h2>
+         {{>preferences}}
+        <button type="submit">Save</button>
+        
+    </form>
+
+    <form id="formByTotal" action="/editProfileByTotal" method="post">
+        <h2>Or just enter your total budget for build</h2>
+        <p>
+            <label>Total Budget $</label>
+            <input type="number" name="budget">
+        </p>
+
+        <h3>Select your intended use below</h3>
+        
+        <p>
+            <label for="gaming">Gaming</label>
+            <input type="radio" id="gaming" name="intendedUse" required value="gaming">
+            <label for="productivity">Productivity</label>
+            <input type="radio" id="productivity" name="intendedUse" required value="productivity">
+        </p>
+
+        <p>
+            <button type="button" onclick="window.history.back()">Back</button>
+            <button type="submit">Save</button>
+        </p>
+    </form>
+
+    <div id="disclaimer" class="modal">
+    <div class="modal-content">
+        <span id="closeModal" class="close">&times;</span>
+        <h2>Are you sure you want to save this form?</h2>
+        <p>Changing your budget and intended use of PC will change the constraints for what PCs you can build. 
+            You may not be able to build the same PC as you did before editing your profile. </p>
+        <button id="cancelSave">Cancel</button>
+        <button id="confirmSave">Confirm</button>
+    </div>
+</div>
+</main>

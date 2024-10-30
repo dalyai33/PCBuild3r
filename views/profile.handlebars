@@ -1,0 +1,35 @@
+ {{>navigation}}
+{{#if username}}
+<h1>{{username}}'s Profile</h1>
+{{/if}}
+
+    {{#if budget}}
+    <p><b>Current Budget</b>: ${{budget}}</p>
+    {{/if}}
+
+    {{#if intendedUse}}
+    <p><b>Intended PC use</b>: {{intendedUse}}</p>
+    {{/if}}
+
+    <h2>Previous builds: </h2>
+    
+    <form action="/viewMore" method="get">
+        <div>
+            <table>
+                <tr>
+                    <th>Name </th>
+                    <th>Price</th>
+                </tr>
+                {{#each pcBuilds}}
+                {{>build}}
+                {{/each}}
+            </table>
+            <button type="submit">view more</button>
+        </div>
+        
+    </form>
+    {{!--{{need to add functionality to see Previous builds}}--}}
+    <p>
+        <button type="button" onclick="window.history.back()">Back</button>
+        <button><a href="/editProfile">Edit Profile</a></button>
+    </p>

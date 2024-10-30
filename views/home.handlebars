@@ -1,0 +1,17 @@
+ {{>navigation}}
+<main id="homePage">
+    {{#if username}}
+    <h1>{{username}}'s Home Dashboard</h1>
+    {{/if}}
+    <p><b>Edit Profile</b>: allows you to change your budget for components, and intended purpose of PC</p>
+    <p><b>Add Build</b>: allows you to manually enter a build you have already built to your profile</p>
+    <p><b>View Profile</b>: allows you to see your current total budget, intended use of PC and previous builds</p>
+
+    <nav>
+        <ul>
+            <li><a href="/editProfile">Edit Profile</a></li>
+            <li><a href="/addBuild">Add Build</a></li>
+            <li><a href="/viewProfile">View Profile</a></li>
+        </ul>
+    </nav>
+</main>

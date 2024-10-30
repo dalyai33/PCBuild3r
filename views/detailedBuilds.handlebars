@@ -1,0 +1,34 @@
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Intended Use</th>
+        <th>CPU</th>
+        <th>RAM Use</th>
+        <th>Motherboard</th>
+        <th>GPU</th>
+        <th>Storage Use</th>
+        <th>Case </th>
+        <th>Cooler</th>
+        <th>Power Supply</th>
+    </tr>
+    
+    {{#each pcBuilds}}
+    <tr>
+        <td>{{name}}</td>
+        <td>{{price}}</td>
+        <td>{{intendedUse}}</td>
+        <td>{{components.cpu}}</td>
+        <td>{{components.ram}}</td>
+        <td>{{components.motherboard}}</td>
+        <td>{{components.gpu}}</td>
+        <td>{{components.storage}}</td>
+        <td>{{components.pcCase}}</td>
+        <td>{{components.cooler}}</td>
+        <td>{{components.psu}}</td>
+    </tr>
+    {{/each}}
+    
+</table>
+
+<button type="button" onclick="window.history.back()">Back</button>

@@ -1,0 +1,11 @@
+<h1>Sign in</h1>
+    <form action="/signIn" method="post">
+        <label>Username</label>
+        <input type="text" name="username">
+        <label>Password</label>
+        <input type="password" name="password">
+        <button type="submit">Enter</button>
+        {{#if error}}
+        <p>{{error}}</p>
+        {{/if}}
+    </form>
