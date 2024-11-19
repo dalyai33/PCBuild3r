@@ -1,0 +1,70 @@
+/*Add user with budget*/
+
+add
+user1
+securepassword
+2000
+
+/*Add user without budget*/
+
+add
+user1
+securepassword
+
+
+
+/*Remove user*/
+
+remove
+user1
+securepassword
+
+
+
+/*Log in user*/
+
+login
+user1
+securepassword
+
+
+
+/*read all user data*/
+
+read 
+user1
+securepassword
+
+
+
+/*update user password*/
+
+update
+user1
+securepassword
+{"password":"newpassword"}
+
+/*update user password simple*/
+
+update
+user1
+securepassword
+newpassword
+
+/*update user budget*/
+
+update
+user1
+securepassword
+{"budget":"8000"}
+
+/*update user budget and password*/
+
+update
+user1
+securepassword
+{"budget":"8000", "password":"newpassword"}
+
+
+
+

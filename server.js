@@ -138,48 +138,85 @@ app.post('/register', (req,res)=>{
         return
     }
 
-    //check if the username hasn't been used already
-    if(profiles[username]){
-        err += ' username already in use'
-        //Send the register error page
-        res.status(200).render("register", {error:err})
-        return
-    }
+    //TODO use microservice A
+
+    //Microservice request pipe
+    const requestPath  =  "microserviceA/request.txt"
+
+    //Microservice repsonse pipe
+    const responsePath = "microserviceA/response.txt"
+
+    //Create the command
+    let requestCommand = "add\n"+username+"\n"+password
+    //Make a request to the microservice
+    fs.writeFileSync(requestPath, requestCommand);
+
+    setTimeout(()=>{
+        //Get the response
+        fs.readFile(responsePath, 'utf-8', function(err,responseData){
+            responseData = responseData.trim()
+            let lines = responseData.split('\n').map(line=>line.trim())
+        
+            if(lines[0] === "error"){
+                console.log(lines[1])
+        
+                res.status(200).render("register", {error: lines[1]})
+                return;
+            }
+
+            //get user initial preferences and append to the profiles
+            let budget = parseInt(formResults.cpu)
+            budget += parseInt(formResults.ram)
+            budget += parseInt(formResults.gpu)
+            budget += parseInt(formResults.motherboard)
+            budget += parseInt(formResults.case)
+            budget += parseInt(formResults.storage)
+            budget += parseInt(formResults.cooler)
+            budget += parseInt(formResults.psu)
+            const intendedUse = formResults.intendedUse
 
 
-    //get user initial preferences and append to the profiles
-    let budget = parseInt(formResults.cpu)
-    budget += parseInt(formResults.ram)
-    budget += parseInt(formResults.gpu)
-    budget += parseInt(formResults.motherboard)
-    budget += parseInt(formResults.case)
-    budget += parseInt(formResults.storage)
-    budget += parseInt(formResults.cooler)
-    budget += parseInt(formResults.psu)
-    const intendedUse = formResults.intendedUse
+            //create new JSON object for the user
+            var user = {
+                password:password,
+                preferences:{
+                    budget:budget,
+                    intendedUse:intendedUse
+                }
+            };
+
+            //Add to the profiles object
+            profiles[username] = user
+
+            //write new object to the file
+            fs.writeFile('./profiles.json', JSON.stringify(profiles,null,2), 'utf-8', (err)=>{
+                if(err){
+                    console.log(err)
+                }
+            })
+
+            //redirect to signIn page
+            res.status(200).render('signIn');
+        
+
+        })
+
+    }, 500)
 
 
-    //create new JSON object for the user
-    var user = {
-        password:password,
-        preferences:{
-            budget:budget,
-            intendedUse:intendedUse
-        }
-    };
+    
+   
 
-    //Add to the profiles object
-    profiles[username] = user
+    //Monolithic design
+    // //check if the username hasn't been used already
+    // if(profiles[username]){
+    //     err += ' username already in use'
+    //     //Send the register error page
+    //     res.status(200).render("register", {error:err})
+    //     return
+    // }
 
-    //write new object to the file
-    fs.writeFile('./profiles.json', JSON.stringify(profiles,null,2), 'utf-8', (err)=>{
-        if(err){
-            console.log(err)
-        }
-    })
 
-    //redirect to signIn page
-    res.status(200).render('signIn');
     
 })
 
@@ -194,23 +231,64 @@ app.post('/signIn', (req,res)=>{
     //set password
     const password = formResults.password
 
-    //Account doesn't exist
-    if(!profiles[username]){
-        res.status(200).render('signIn', {error: `account does not exist`})
-        return;
-    }
 
-    //Password was wrong
-    if(profiles[username].password !== password){
-        res.status(200).render('signIn', {error: 'wrong password'})
-        return;
-    }
+    //TODO use microservice A
 
-    //Set up the cookie and log the user in
-    res.cookie('username', username, {maxAge:8640000, httpOnly:true})
+    //Microservice request pipe
+    const requestPath  =  "microserviceA/request.txt"
 
-    //render the homepage with the username
-    res.status(200).render('home', {username})
+    //Microservice repsonse pipe
+    const responsePath = "microserviceA/response.txt"
+
+    //Create command
+    let requestCommand = "login\n"+ username + "\n" + password
+
+    //Write command to the requestPath
+    fs.writeFileSync(requestPath, requestCommand)
+
+    setTimeout(()=>{
+        //Retrieve the response
+        fs.readFile(responsePath, "utf-8", function (err, responseData){
+            //trim the response
+        responseData = responseData.trim()
+
+        //Split the response into lines 
+        let lines = responseData.split('\n').map(line=>line.trim())
+        console.log(lines[0])
+        //Check for log in error
+        if(lines[0] === "error"){
+            //Render the error
+            res.status(200).render("signIn", {error: lines[1]})
+            return;
+        }
+
+
+        //Set up the cookie and log the user in
+        res.cookie('username', username, {maxAge:8640000, httpOnly:true})
+
+        //render the homepage with the username
+        res.status(200).render('home', {username})
+
+        })
+    }, 400)
+    
+
+   
+
+    //Monolithic microservice A,
+    // //Account doesn't exist
+    // if(!profiles[username]){
+    //     res.status(200).render('signIn', {error: `account does not exist`})
+    //     return;
+    // }
+
+    // //Password was wrong
+    // if(profiles[username].password !== password){
+    //     res.status(200).render('signIn', {error: 'wrong password'})
+    //     return;
+    // }
+
+    
 })
 
 //change budget by component

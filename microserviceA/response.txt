@@ -1,0 +1,2 @@
+error
+Username already exists
