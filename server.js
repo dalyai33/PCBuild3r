@@ -428,7 +428,59 @@ app.post('/addBuild', (req,res) =>{
 
 //TODO: implement budget pc finder using microserviceD/pipe.txt communication pipe
 
+app.get('/budgetPCs', (req,res)=>{
 
+    //TODO interact with the microservice
+
+    //Get the username
+    const username = req.cookies.username
+
+    //get the json object
+    const jsonData = require('./profiles.json')
+
+    //Get the budget associated with the username
+    const budget = jsonData[username].preferences.budget
+
+    //Make the request 
+    let requestString = "budget "+budget + " C:/Users/aidan/Documents/CS361/Main-Program-C361/pcBuilds.json"
+
+    //write request to the pipe
+    fs.writeFile('microserviceD/pipe.txt', requestString, 'utf-8', (err)=>{
+        if(err){
+            console.log(err)
+        }
+
+        //Delay 500 miliseconds
+        setTimeout(()=>{
+             //returned data
+                fs.readFile('microserviceD/pipe.txt', 'utf-8', function(err, returnedData){
+
+                    //When there are no pcs in the user's budget
+                    if(returnedData === 'NoneFound'){
+                        res.status(200).render('budgetBuilds', {error: "There are no PCs in the database that are in your budget range."})
+                    }
+                    
+                    //There are PCs in the users budget
+                    else{
+
+                        //Parse the retrieved data to json
+                        returnedData = JSON.parse(returnedData)
+
+                        //Render the page with the tables
+                        res.status(200).render('budgetBuilds', {pcBuilds: returnedData})
+                    }
+            })
+        }, 500)
+       
+
+
+       
+    })
+   
+
+    
+
+})
 
 
 

@@ -85,6 +85,8 @@ table,th,td,tr{
     border: 1px solid black;
     color: black;
     padding: 5px;
+
+    margin-top: 10px;
 }
 #error{
     color: red;

@@ -33,19 +33,24 @@ async function monitorFile() {
                     //iterate through each pc build of the current user
                     jsonData[user].forEach((build)=>{
                         if(build.price <= budget){
-                            budgetBuilds.push(build.name)
+                            budgetBuilds.push(build)
                         }
                     })
                 }
 
-                budgetBuilds = "matchingBuilds\n"+budgetBuilds  
+                if(budgetBuilds.length === 0){
+                    await fs.writeFile(pipe, "NoneFound")
+                }
+                else{
+                    budgetBuilds = JSON.stringify(budgetBuilds, null, 2) 
 
-                // Write to the file
-                await fs.writeFile(pipe, budgetBuilds)
+                    // Write to the file
+                    await fs.writeFile(pipe, budgetBuilds)
+                }
+
+                
 
                
-
-                return;
             }
 
             // Add a small delay to avoid CPU hogging
