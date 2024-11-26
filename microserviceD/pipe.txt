@@ -15,21 +15,6 @@
     "price": 1300
   },
   {
-    "name": "High-End Build",
-    "components": {
-      "cpu": "Intel Core i9-13900K",
-      "ram": "Corsair Vengeance 64GB DDR5",
-      "gpu": "NVIDIA GeForce RTX 4090",
-      "motherboard": "ASUS ROG Strix Z790-E Gaming",
-      "pcCase": "Lian Li O11 Dynamic EVO",
-      "storage": "Samsung 990 Pro 2TB NVMe",
-      "cooler": "NZXT Kraken Z73",
-      "psu": "Seasonic PRIME TX-1000"
-    },
-    "intendedUse": "gaming",
-    "price": 5000
-  },
-  {
     "name": "Budget Gaming PC",
     "components": {
       "cpu": "Intel Core i3-12100F",

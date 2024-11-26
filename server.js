@@ -482,6 +482,74 @@ app.get('/budgetPCs', (req,res)=>{
 
 })
 
+app.get('/recommendPCs', (req,res)=>{
+    //recommend budget intendedUse
+
+    //Get the username
+    const username = req.cookies.username
+
+    //get the json object
+    const jsonData = require('./profiles.json')
+
+    //Get the budget associated with the username
+    const budget = jsonData[username].preferences.budget
+
+    //get the intendedUse associated with the username
+    const intendedUse = jsonData[username].preferences.intendedUse
+
+    //Create command for request
+    const request = "recommend " + budget + " " + intendedUse
+
+    //write request to the pipe
+    fs.writeFile('microserviceB/pipe.txt', request, 'utf-8', (err)=>{
+        if(err){
+            console.log(err)
+        }
+
+        //Delay 500 miliseconds
+        setTimeout(()=>{
+             //returned data
+                fs.readFile('microserviceB/pipe.txt', 'utf-8', function(err, returnedData){
+
+                    //tokenize the data using new line delimiter
+                    returnedData = returnedData.split('\n')
+
+                    //if the microservice has returned data
+                    if(returnedData[0] === "result"){
+
+                        //remove the result string for the from the data
+                        returnedData = returnedData.slice(1)
+
+                        //get the cost of the build
+                        const cost = returnedData[0]
+
+                        //get the array of parts for the build
+                        returnedData = returnedData.slice(1)
+
+                        console.log(returnedData)
+                        
+
+                        console.log(cost)
+
+                        //TODO add microservice C for GPU and CPU photos
+
+                        //render the build in a table on the recommendedPCs page
+                        res.status(200).render('recommendedPCs', {parts: returnedData, totalCost: cost, budget:budget, intendedUse:intendedUse})
+
+                        
+                    }
+            })
+        }, 500)
+       
+
+
+       
+    })
+    
+
+
+})
+
 
 
 app.get('/viewMore', (req,res)=>{

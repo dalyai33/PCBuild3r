@@ -1,0 +1,55 @@
+{{>navigation}}
+
+{{#if budget}}
+    {{#if intendedUse}}
+        <h1>Recommended PC for your budget of ${{budget}} and intended use of {{intendedUse}}</h1>
+    {{/if}}
+{{/if}}
+
+<table>
+    <tr>
+        <th>Price</th>
+        <th>CPU</th>
+        <th>GPU </th>
+        <th>Motherboard</th>
+        <th>RAM</th>
+        <th>Case </th>
+        <th>Power Supply </th>
+        <th>Storage</th>
+        <th>CPU Cooler</th>
+    </tr>
+    
+   
+    <tr>
+        {{#if totalCost}}
+            <td>{{totalCost}}</td>
+        {{/if}}
+
+         {{#each parts}}
+        <td>{{this}}</td>
+         {{/each}}
+    </tr>
+   
+
+</table>
+
+<p>
+    {{#if cpuPhoto}}
+    <figure>
+        <img src="{{cpuPhoto}}" alt="cpu photo">
+        <figcaption>Photo of CPU brand</figcaption>
+    </figure>
+    {{/if}}
+
+    {{#if gpuPhoto}}
+    <figure>
+        <img src="{{gpuPhoto}}" alt="gpu photo">
+        <figcaption>Photo of GPU brand</figcaption>
+    </figure>
+    {{/if}}
+</p>
+
+
+
+<a href="/home"><button type="button">Back</button></a>
+
