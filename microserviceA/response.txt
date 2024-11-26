@@ -1,2 +1,2 @@
-error
-Username already exists
+success
+Login successful

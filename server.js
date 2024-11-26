@@ -138,7 +138,7 @@ app.post('/register', (req,res)=>{
         return
     }
 
-    //TODO use microservice A
+    //use microservice A
 
     //Microservice request pipe
     const requestPath  =  "microserviceA/request.txt"
@@ -232,7 +232,7 @@ app.post('/signIn', (req,res)=>{
     const password = formResults.password
 
 
-    //TODO use microservice A
+    //use microservice A
 
     //Microservice request pipe
     const requestPath  =  "microserviceA/request.txt"
@@ -425,6 +425,12 @@ app.post('/addBuild', (req,res) =>{
     //redirect to home
     res.redirect('home')
 })
+
+//TODO: implement budget pc finder using microserviceD/pipe.txt communication pipe
+
+
+
+
 
 app.get('/viewMore', (req,res)=>{
     //Get username

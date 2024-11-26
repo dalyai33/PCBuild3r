@@ -1,1 +1,1 @@
-{"daly": {"password": "e947388e23648aaef85a0a50c02b97fcf7cae2cc95e95f8108d2d7da632ed108", "budget": null}}
+{"daly": {"password": "e947388e23648aaef85a0a50c02b97fcf7cae2cc95e95f8108d2d7da632ed108", "budget": null}, "aidan": {"password": "e4bb33e05498befc02052011b9a04bcb4eb99006088fcea77fc829385430f288", "budget": null}}
