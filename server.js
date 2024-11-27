@@ -531,10 +531,70 @@ app.get('/recommendPCs', (req,res)=>{
 
                         console.log(cost)
 
-                        //TODO add microservice C for GPU and CPU photos
+                        //microservice C for GPU and CPU photos
 
-                        //render the build in a table on the recommendedPCs page
-                        res.status(200).render('recommendedPCs', {parts: returnedData, totalCost: cost, budget:budget, intendedUse:intendedUse})
+                            //contains Radeon or Geforce
+                            //contains Intel or AMD
+
+                            //image cpu gpu is the command
+                            let imageRequest = "image"
+
+                            //if cpu is Intel, add Intel to the command
+                            if(returnedData[0].includes("Intel")){
+                                imageRequest = imageRequest + " Intel"
+                            }
+                            //if the cpu is AMD, add AMD to the command
+                            else if(returnedData[0].includes("AMD")){
+                                imageRequest = imageRequest + " AMD"
+                            }
+
+                            //If the gpu is GeForce, add Nvidia to the command
+                            if(returnedData[1].includes("GeForce")){
+                                imageRequest = imageRequest + " Nvidia"
+                            }
+                            //if the gpu is Radeon, add AMD to the command
+                            else if(returnedData[1].includes("Radeon")){
+                                imageRequest = imageRequest + " AMD"
+                            }
+
+
+                        //Write the command to the pipe
+                        fs.writeFile("microserviceC/pipe.txt", imageRequest, "utf-8", (err)=>{
+
+                            // Wait 500 milliseconds before reading
+                            setTimeout(()=>{
+
+                                //read the returned data from the pipe
+                                fs.readFile('microserviceC/pipe.txt', 'utf-8', function(err, imageData){
+
+                                    //tokenize the returned data
+                                    imageData = imageData.split(" ")
+    
+                                    //If the program has returned
+                                    if(imageData[0] === "result"){
+
+                                        //Get the path for both CPU and GPU images
+                                        const cpuImage = imageData[1]
+                                        const gpuImage = imageData[2]
+
+                                        console.log(cpuImage)
+    
+                                         //render the build in a table on the recommendedPCs page
+
+                                    //Render the recommended PC page with all the params
+                                    res.status(200).render('recommendedPCs', {parts: returnedData, totalCost: cost, budget:budget
+                                        ,intendedUse:intendedUse, cpuPhoto: cpuImage, gpuPhoto:gpuImage})
+                                    }
+    
+                                   
+                                })
+                            },500)
+                            
+
+                            
+                        })
+
+                       
 
                         
                     }

@@ -33,21 +33,31 @@
 
 </table>
 
-<p>
-    {{#if cpuPhoto}}
+
+<div class="row">
+    <div class="column">
+          {{#if cpuPhoto}}
     <figure>
         <img src="{{cpuPhoto}}" alt="cpu photo">
         <figcaption>Photo of CPU brand</figcaption>
     </figure>
     {{/if}}
+    </div>
 
-    {{#if gpuPhoto}}
-    <figure>
-        <img src="{{gpuPhoto}}" alt="gpu photo">
-        <figcaption>Photo of GPU brand</figcaption>
-    </figure>
-    {{/if}}
-</p>
+    
+
+    <div class="column">
+
+        {{#if gpuPhoto}}
+        <figure>
+            <img src="{{gpuPhoto}}" alt="gpu photo">
+            <figcaption>Photo of GPU brand</figcaption>
+        </figure>
+        {{/if}}
+
+    </div>
+</div>
+
 
 
 

@@ -1,0 +1,1 @@
+result /images/amd-cpu.png /images/amd-gpu.png
