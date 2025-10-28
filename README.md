@@ -35,9 +35,13 @@ npm install
 ## Running the Programs
 
 ### Main-Program-C361
-```bash npm run dev```
+```bash 
+npm run dev
+```
 or
-```bash nodemon server.js ```
+```bash
+nodemon server.js
+ ```
 
 ### microserviceA
 ```bash cd microserviceA //in another terminal
