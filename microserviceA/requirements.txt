@@ -1,0 +1,4 @@
+# MicroserviceA requirements
+# Uses only standard library
+# Specify Python version if needed
+python>=3.10
