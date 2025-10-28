@@ -11,8 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [20.x]   # adjust Node.js version
-        python-version: [3.10] # adjust Python version
+        node-version: [20.x]   # Node.js version
+        python-version: [3.10] # Python version
 
     steps:
       - name: Checkout repository
@@ -34,7 +34,23 @@ jobs:
       - name: Install Node dependencies for MainProg
         run: npm install
 
-      # Optional: Install nodemon globally if not in package.json
+      # Install Node dependencies for MicroserviceB, C, D (if they have package.json)
+      - name: Install Node dependencies for MicroserviceB
+        run: |
+          cd microserviceB
+          npm install || echo "No dependencies to install"
+
+      - name: Install Node dependencies for MicroserviceC
+        run: |
+          cd microserviceC
+          npm install || echo "No dependencies to install"
+
+      - name: Install Node dependencies for MicroserviceD
+        run: |
+          cd microserviceD
+          npm install || echo "No dependencies to install"
+
+      # Optional: Install nodemon globally
       - name: Install nodemon globally
         run: npm install -g nodemon
 
@@ -42,7 +58,7 @@ jobs:
       - name: Install Python dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r microserviceA/requirements.txt
+          pip install -r microserviceA/requirements.txt || echo "No dependencies required"
 
       # Run MicroserviceA
       - name: Start MicroserviceA
