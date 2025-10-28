@@ -44,21 +44,28 @@ nodemon server.js
  ```
 
 ### microserviceA
-```bash cd microserviceA //in another terminal
-python microserviceA.py ```
+```bash
+cd microserviceA //in another terminal
+python microserviceA.py
+ ```
 
 ### microserviceB
-cd microserviceB in another terminal
+```bash
+cd microserviceB //in another terminal
 python microserviceB.js
+```
 
 ### microserviceC
-cd microserviceC in another terminal
+```bash
+cd microserviceC //in another terminal
 python microserviceC.js
+```
 
 ### microserviceD
-cd microserviceD in another terminal
+```bash
+cd microserviceD //in another terminal
 python microserviceD.js
-
+```
 ##Microservices Explained
 - Microservice A handles the user login and registration
 - Microservice B recommends PC based on user preferances
