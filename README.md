@@ -30,17 +30,18 @@ This project consists of a main program (`Main-Program-C361`) and four microserv
 
 ```bash
 npm install
+```
 
 ## Running the Programs
 
 ### Main-Program-C361
-npm run dev
+```bash npm run dev```
 or
-nodemon server.js
+```bash nodemon server.js ```
 
 ### microserviceA
-cd microserviceA in another terminal
-python microserviceA.py
+```bash cd microserviceA //in another terminal
+python microserviceA.py ```
 
 ### microserviceB
 cd microserviceB in another terminal
