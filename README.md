@@ -70,7 +70,7 @@ In a new terminal,
 cd microserviceD 
 python microserviceD.js
 ```
-##Microservices Explained
+## Microservices Explained
 - Microservice A handles the user login and registration
 - Microservice B recommends PC based on user preferances
 - Microservice C produces images for gpu and cpu brand
