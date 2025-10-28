@@ -4,9 +4,16 @@ This project consists of a main program (`Main-Program-C361`) and four microserv
 
 ---
 
+## Microservices Explained
+- Microservice A handles the user login and registration
+- Microservice B recommends PC based on user preferances
+- Microservice C produces images for gpu and cpu brand
+- Microservice D shows the user PCs that are in there budget that are in the database already
+- Main-Program-C361 handles the redirection to webpages such as view builds page.
+
 ## Dependencies
 
-### MainProg
+### Main-Program-C361
 - Node.js
 - Nodemon
 - express.js
@@ -70,11 +77,7 @@ In a new terminal,
 cd microserviceD 
 python microserviceD.js
 ```
-## Microservices Explained
-- Microservice A handles the user login and registration
-- Microservice B recommends PC based on user preferances
-- Microservice C produces images for gpu and cpu brand
-- Microservice D shows the user PCs that are in there budget that are in the database already
+
 
 
 
