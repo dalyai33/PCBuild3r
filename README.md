@@ -44,26 +44,30 @@ nodemon server.js
  ```
 
 ### microserviceA
+In a new terminal,
 ```bash
-cd microserviceA //in another terminal
+cd microserviceA 
 python microserviceA.py
  ```
 
 ### microserviceB
+In a new terminal,
 ```bash
-cd microserviceB //in another terminal
+cd microserviceB 
 python microserviceB.js
 ```
 
 ### microserviceC
+In a new terminal,
 ```bash
-cd microserviceC //in another terminal
+cd microserviceC 
 python microserviceC.js
 ```
 
 ### microserviceD
+In a new terminal,
 ```bash
-cd microserviceD //in another terminal
+cd microserviceD 
 python microserviceD.js
 ```
 ##Microservices Explained
