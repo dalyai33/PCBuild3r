@@ -8,7 +8,7 @@ This project consists of a main program (`Main-Program-C361`) and four microserv
 - Microservice A handles the user login and registration
 - Microservice B recommends PC based on user preferances
 - Microservice C produces images for gpu and cpu brand
-- Microservice D shows the user PCs that are in there budget that are in the database already
+- Microservice D shows the user PCs that are in their budget that are already in the database
 - Main-Program-C361 handles the redirection to webpages such as view builds page.
 
 ## Dependencies
